@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SGS EXAM CRACKER</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #e0f7fa, #fff3e0);
+      color: #1f1f1f;
+    }
+
+    header {
+      background: #2b2b2b;
+      padding: 30px 20px;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .drawer-btn {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+      z-index: 1001;
+    }
+
+    #drawer {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background-color: #333;
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+
+    #drawer a {
+      display: block;
+      padding: 15px 25px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    #drawer a:hover {
+      background-color: #575757;
+    }
+
+    .translate-box {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1002;
+    }
+
+    .goog-te-gadget span {
+      display: none;
+    }
+
+    .goog-te-combo {
+      padding: 6px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .shayari {
+      background: linear-gradient(135deg, #ffe0e0, #ffe9cc);
+      margin: 20px auto;
+      max-width: 850px;
+      padding: 15px 25px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 12px;
+      color: #b30000;
+    }
+
+    .buttons {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 10px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px; /* ✅ updated spacing */
+    }
+
+    .btn-card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 18px;
+      color: #000;
+      text-decoration: none;
+      border-left: 6px solid;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-card::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 0%;
+      height: 100%;
+      background-color: rgba(0, 123, 255, 0.1); /* animation fill */
+      transition: width 0.4s ease;
+      z-index: 0;
+    }
+
+    .btn-card:active::after {
+      width: 100%;
+    }
+
+    .btn-card span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-card:hover {
+      background: #e0f7fa;
+    }
+
+    .btn1 { border-color: #007bff; }
+    .btn2 { border-color: #28a745; }
+    .btn3 { border-color: #ff5722; }
+    .btn4 { border-color: #9c27b0; }
+    .btn5 { border-color: #17a2b8; }
+
+    footer {
+      background: #1e1e1e;
+      color: #ccc;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    .content-section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      display: none;
+    }
+
+    .active-section {
+      display: block;
+    }
+
+    #welcomeModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #welcomeBox {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 90%;
+    }
+
+    #welcomeBox h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    #welcomeBox button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #welcomeBox button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Welcome Modal -->
+  <div id="welcomeModal">
+    <div id="welcomeBox">
+      <h2>🙏 स्वागत है आपका SGS EXAM CRACKER में</h2>
+      <button onclick="enterSite()">धन्यवाद</button>
+    </div>
+  </div>
+
+  <!-- Google Translate Box -->
+  <div class="translate-box" id="google_translate_element"></div>
+
+  <!-- Header with Drawer Button -->
+  <header>
+    <button class="drawer-btn" onclick="toggleDrawer()">☰</button>
+    <h1>SGS EXAM CRACKER</h1>
+  </header>
+
+  <!-- Left Drawer -->
+  <div id="drawer">
+    <a href="#" onclick="showSection('home')">🏠 Home</a>
+    <a href="#" onclick="showSection('privacy')">📜 Privacy Policy</a>
+    <a href="#" onclick="showSection('terms')">📄 Terms & Conditions</a>
+    <a href="#" onclick="showSection('contact')">📩 Contact Us</a>
+    <a href="https://youtube.com/@sachinironflex" target="_blank">▶️ Main YouTube</a>
+    <a href="https://www.instagram.com/t_sachin420" target="_blank">📸 Instagram</a>
+    <a href="https://youtube.com/@mrsgs-b7e" target="_blank">🎬 2nd YouTube</a>
+    <a href="#" onclick="rateWebsite()">⭐ Rate this Website</a>
+  </div>
+
+  <!-- Shayari Section -->
+  <section class="shayari">
+    🔥 मेहनत इतनी ख़ामोशी से करो कि सफलता शोर मचा दे 🔥
+  </section>
+
+  <!-- Main Buttons Section -->
+  <section class="buttons content-section active-section" id="home">
+    <a href="https://kgsexamcracker.blogspot.com/p/ssc-all-exam.html" class="btn-card btn1" target="_blank"><span>📘 SSC ALL EXAM</span></a>
+    <a href="https://kgsexamcracker.blogspot.com/p/bihar-police.html" class="btn-card btn2" target="_blank"><span>👮 BIHAR POLICE</span></a>
+    <a href="https://kgsexamcracker.blogspot.com/p/ssc-mts.html" class="btn-card btn3" target="_blank"><span>📗 SSC MTS</span></a>
+    <a href="https://kgsexamcracker.blogspot.com/p/ssc-all-pdf.html" class="btn-card btn4" target="_blank"><span>📂 SSC ALL PDF</span></a>
+    <a href="https://kgsexamcracker.blogspot.com/p/test-series.html" class="btn-card btn5" target="_blank"><span>📝 TEST SERIES</span></a>
+  </section>
+
+  <!-- Privacy Section -->
+  <section class="content-section" id="privacy">
+    <h2>Privacy Policy</h2>
+    <p>SGS EXAM CRACKER वेबसाइट का मुख्य उद्देश्य छात्रों को निःशुल्क अध्ययन सामग्री प्रदान करना है। हम उपयोगकर्ताओं से किसी भी प्रकार की व्यक्तिगत जानकारी जैसे नाम, पता, बैंक विवरण आदि एकत्र नहीं करते।</p>
+    <p>हम Razorpay जैसी थर्ड पार्टी पेमेंट सेवाओं के साथ केवल भुगतान प्रक्रिया के लिए जुड़ते हैं और आपका डेटा Razorpay की सुरक्षा नीतियों के अनुसार सुरक्षित रहता है।</p>
+    <p>हम वेबसाइट पर Cookies का उपयोग केवल उपयोगकर्ता अनुभव को बेहतर बनाने के लिए करते हैं। ये Cookies किसी भी संवेदनशील जानकारी को स्टोर नहीं करती हैं।</p>
+    <p>वेबसाइट पर उपलब्ध सभी बाहरी लिंक (जैसे YouTube, Instagram आदि) केवल सुविधा के लिए हैं। हम उन वेबसाइट्स की सामग्री के लिए जिम्मेदार नहीं हैं।</p>
+    <p>हम बच्चों की सुरक्षा को लेकर भी प्रतिबद्ध हैं। यदि आपको लगता है कि किसी बच्चे की जानकारी हमारी वेबसाइट के माध्यम से साझा की गई है, तो कृपया तुरंत हमसे संपर्क करें।</p>
+  </section>
+
+  <!-- Terms Section -->
+  <section class="content-section" id="terms">
+    <h2>Terms & Conditions</h2>
+    <p>इस वेबसाइट पर उपलब्ध सभी सामग्री जैसे PDF, Notes, Videos आदि केवल शैक्षणिक उद्देश्य से हैं।</p>
+    <p>कोई भी उपयोगकर्ता इस सामग्री को पुनः प्रकाशित, पुनर्वितरित, या किसी व्यावसायिक उद्देश्य से उपयोग नहीं कर सकता। ऐसा करने पर कानूनी कार्रवाई की जा सकती है।</p>
+    <p>SGS EXAM CRACKER वेबसाइट पर दी गई जानकारी यथासंभव सही है, लेकिन किसी भी त्रुटि के लिए हम जिम्मेदार नहीं हैं।</p>
+    <p>वेबसाइट का उपयोग करते समय उपयोगकर्ता को सभी नियम व शर्तों से सहमत होना आवश्यक है।</p>
+    <p>हम अपने Terms & Conditions को बिना पूर्व सूचना के अपडेट कर सकते हैं।</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="content-section" id="contact">
+    <h2>Contact Us</h2>
+    <p>📧 Email: <a href="mailto:sachinbusiness64@gmail.com">sachinbusiness64@gmail.com</a></p>
+    <p>📱 Phone: 8002184205 (Only WhatsApp or Email)</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    ©️ 2025 SGS EXAM CRACKER. All Rights Reserved.
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleDrawer() {
+      const drawer = document.getElementById('drawer');
+      drawer.style.left = drawer.style.left === '0px' ? '-260px' : '0px';
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active-section'));
+      document.getElementById(id).classList.add('active-section');
+      toggleDrawer();
+    }
+
+    function rateWebsite() {
+      const rating = prompt("Rate our website (1 to 5 stars):");
+      if (rating && rating >= 1 && rating <= 5) {
+        alert("🌟 Thank you for rating us " + rating + " stars!");
+      } else {
+        alert("⚠️ Please enter a valid rating between 1 and 5.");
+      }
+    }
+
+    function enterSite() {
+      document.getElementById("welcomeModal").style.display = "none";
+    }
+
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'hi',
+        includedLanguages: 'hi,en,bho',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
+    window.onbeforeunload = function () {
+      return "क्या आप सच में वेबसाइट से बाहर जाना चाहते हैं?";
+    };
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
+
